@@ -10,7 +10,7 @@
           <span style="text-align: right; color: white; display:inline; float: right">{{article.media}}</span>
           <span style="text-align: left; color: white; float: left;">{{article.posted_at}}</span><br>
 
-          <img :src="article.thmbnail_img_url" alt="">
+          <img :src="article.thmbnail_img_url" alt=""><br>
           <span style="color: white; margin-top: 50px; font-size: 85%">{{article.lead_text}}</span>
         </div>
       </template>
@@ -147,7 +147,8 @@ export default {
   }
 
   .article img{
-    width: 70vw;
+    width: 80vw;
+    max-width: 350px;
     height: auto;
     margin-top: 40px;
     margin-bottom: 40px;
