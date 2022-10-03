@@ -147,7 +147,7 @@ export default {
   }
 
   .article img{
-    width: 80vw;
+    width: 70vw;
     max-width: 350px;
     height: auto;
     margin-top: 40px;
