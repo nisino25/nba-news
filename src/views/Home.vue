@@ -11,7 +11,7 @@
           <span style="text-align: left; color: white; float: left;">{{article.posted_at}}</span><br>
 
           <img :src="article.thmbnail_img_url" alt=""><br>
-          <span style="color: white; margin-top: 50px; font-size: 85%">{{article.lead_text}}</span>
+          <span style="color: white; margin-top: 50px; font-size: 85%">{{article.lead_text}}...</span>
         </div>
       </template>
     </div>
