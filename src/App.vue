@@ -24,8 +24,8 @@
   <div>
     <footer>
       <div class="footer-wrapper">
-        <div>
         <strong>FOLLOW US</strong>
+        <div class="someclass"></div>
           <hr>
           <div class="icon-wrapper">
             <!-- <a href="#" class="fa fa-twitter"></a> -->
@@ -35,7 +35,6 @@
           </div>
         </div>
         
-      </div>
       
     </footer>
   </div>
@@ -233,17 +232,32 @@ body {
 footer{
   margin-top: 100px;
   background-color: white;
-  padding: 50px 20px;
+  padding: 50px 15px;
+
 }
 
-/* .footer-wrapper{
+.footer-wrapper{
   margin: auto auto;
   text-align: center;
-} */
+  width: 92.5%;
+  max-width: 600px;
+  position: relative;
+  /* background-color: red; */
+}
+
+
 
 footer strong{
   font-size: 125%;
+  /* text-align: left; */
+  float: left;
+  display: block;
 }
+
+.someclass {
+     clear: both;
+}
+
 
 footer hr{
   margin: 20px 0px 40px; 
@@ -254,6 +268,7 @@ footer hr{
 }
 
 footer .icon-wrapper{
+  text-align: left;
   /* margin-top: 20px; */
   /* background-color: red; */
 }
@@ -267,7 +282,7 @@ footer .icon-wrapper{
   width: 30px;
   text-align: center;
   text-decoration: none;
-  margin: 50px 5px;
+  margin: 50px 7.5px;
   border-radius: 50%;
 
   background: black;
