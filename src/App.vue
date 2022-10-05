@@ -20,6 +20,25 @@
   </div>
    
   <router-view/>
+
+  <div>
+    <footer>
+      <div class="footer-wrapper">
+        <div>
+        <strong>FOLLOW US</strong>
+          <hr>
+          <div class="icon-wrapper">
+            <!-- <a href="#" class="fa fa-twitter"></a> -->
+            <a href="https://www.instagram.com/nbabrosch/?hl=en" class="fa fa-instagram"></a>
+            <a href="https://www.youtube.com/channel/UCqIDEQXMYE_cueQyGl6Fgbw/videos?view=57" class="fa fa-youtube"></a>
+
+          </div>
+        </div>
+        
+      </div>
+      
+    </footer>
+  </div>
 </template>
 
 <style>
@@ -169,7 +188,7 @@ body {
 }
 @media (max-width: 992px) {
   .wrapper {
-    padding: 30px 0 15px;
+    padding: 20px 0 15px;
   }
 }
 
@@ -210,5 +229,53 @@ body {
     padding: 25px 15px;
   }
 } */
+
+footer{
+  margin-top: 100px;
+  background-color: white;
+  padding: 50px 20px;
+}
+
+/* .footer-wrapper{
+  margin: auto auto;
+  text-align: center;
+} */
+
+footer strong{
+  font-size: 125%;
+}
+
+footer hr{
+  margin: 20px 0px 40px; 
+  border: 0.5px solid black;
+  width: 70px;
+  /* text-align: left;
+  float: left; */
+}
+
+footer .icon-wrapper{
+  /* margin-top: 20px; */
+  /* background-color: red; */
+}
+
+.fa {
+  
+  /* margin-top: 50px; */
+  display: inline;
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 50px 5px;
+  border-radius: 50%;
+
+  background: black;
+  color: white;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
 
 </style>
