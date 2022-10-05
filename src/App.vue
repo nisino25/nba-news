@@ -9,11 +9,11 @@
          data-color="rgba(255, 0, 0, 1)"
          ===================================
          -->
-      <a href="#" class="nav-item active" data-color="#663399">Home</a>
-      <a href="#" class="nav-item" data-color="#446A46">test</a>
-      <a href="#" class="nav-item" data-color="#D82148">test</a>
-      <a href="#" class="nav-item" data-color="#FFB72B">test</a>
-      <a href="#" class="nav-item" data-color="#1C0A00">test</a>
+      <a href="/" class="nav-item active" data-color="#663399">Home</a>
+      <a href="/test" class="nav-item" data-color="#446A46">test</a>
+      <a href="/test" class="nav-item" data-color="#D82148">test</a>
+      <a href="/test" class="nav-item" data-color="#FFB72B">test</a>
+      <a href="/test" class="nav-item" data-color="#1C0A00">test</a>
       <span class="nav-indicator"></span>
    </nav>
 
@@ -24,7 +24,8 @@
 
 <style>
 body{
-  background-color: #0F3460;
+  /* background-color: #0F3460; */
+  background-color: #eee;
 }
 
 #app {
@@ -32,7 +33,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: #E94560;
+  /* color: #E94560; */
   
 }
 
@@ -66,7 +67,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 30px 0;
+  padding: 20px 0;
 }
 .nav {
   display: -webkit-inline-box;
@@ -168,7 +169,7 @@ body {
 }
 @media (max-width: 992px) {
   .wrapper {
-    padding: 30px 0;
+    padding: 30px 0 15px;
   }
 }
 
