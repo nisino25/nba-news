@@ -45,21 +45,27 @@ export default{
   
 } 
 </script>
+
 <style>
 body{
   /* background-color: #0F3460; */
   background-color: #eee;
+  
+  /* position:absolute; */
+  /* display: flex;
+    flex-direction: column; */
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  
   /* text-align: center; */
   /* color: #E94560; */
   
 }
-
 
 .nav,
 .nav-item {
@@ -234,11 +240,11 @@ body {
   }
 } */
 
-footer{
-  margin-top: 100px;
+footer{ 
+  margin-top: auto;
   background-color: white;
   padding: 50px 15px;
-
+  
 }
 
 .footer-wrapper{
@@ -247,7 +253,6 @@ footer{
   width: 92.5%;
   max-width: 600px;
   position: relative;
-  /* background-color: red; */
 }
 
 

@@ -3,7 +3,7 @@
     <!-- <h1 style="text-align: left; margin-left:25px;">Home</h1> -->
     <h1 style="display: block; text-align: center;">Home</h1>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" v-if="dummyData" style="margin-bottom: 100px; ">
       <template v-for="(article,i) in dummyData" :key="i">
         <div class="article" >
           <div class="article-left">
@@ -35,6 +35,10 @@
         </div>
       </template>
     </div>
+
+    <div v-else style=" min-height: 60vh; ">
+      <div class="loader"></div>
+    </div>
     
   </div>
 </template>
@@ -56,88 +60,7 @@ export default {
   data(){
     return{
       // db,
-      dummyData:[
-  {
-    "media": "NBA_Report",
-    "title": "ウィザーズの日本遠征",
-    "atricle_url": "http://nbareporter.net/2022/09/30/01-129/",
-    "posted_at": "2022-09-30",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/09/Wizards_Japantrip-600x400.jpg",
-    "lead_text": "この記事は主にThe Athleticのジョッシュ・ロビンスの記事「How the Wiz"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "サンズ売却について",
-    "atricle_url": "http://nbareporter.net/2022/09/28/01-128/",
-    "posted_at": "2022-09-28",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/09/robertsarver3-1-600x400.jpg",
-    "lead_text": "ロバート・サーヴァーは最初、比較的ゆるいと非難されていたNBAからの1年停職の罰則に意地で"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "イーメイ騒動、これまでのまとめ",
-    "atricle_url": "http://nbareporter.net/2022/09/25/01-127/",
-    "posted_at": "2022-09-25",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/09/AP-PhotoSteven-Senne-600x400.jpg",
-    "lead_text": "セルティクスが球団規定違反のため、ヘッドコーチのイーメイ・ウドーカに1年の停職処分を課しま"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "ロバート・サーヴァーへのNBAの罰則について",
-    "atricle_url": "http://nbareporter.net/2022/09/22/01-126/",
-    "posted_at": "2022-09-22",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/09/robertsarver-1-600x400.jpg",
-    "lead_text": "9月14日、NBAが昨年11月から続けていたサンズのオーナーのロバート・サーヴァーの人種差"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "NBAスケジュールのつくり方",
-    "atricle_url": "http://nbareporter.net/2022/09/08/01-125/",
-    "posted_at": "2022-09-08",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/09/NBAschedule-600x400.jpg",
-    "lead_text": "8/17に2022-23シーズンのスケジュールが発表されました。通常は8/10~14の間で"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "ドノヴァン・ミッチェルのトレード",
-    "atricle_url": "http://nbareporter.net/2022/09/05/01-124/",
-    "posted_at": "2022-09-05",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/09/Glenn-James-600x400.jpg",
-    "lead_text": "ニックスへのトレードは間違いないと思われていたドノヴァン・ミッチェルがなんとキャヴァリアー"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "Wojとネッツ",
-    "atricle_url": "http://nbareporter.net/2022/08/25/01-123/",
-    "posted_at": "2022-08-25",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/08/woj2-600x400.jpg",
-    "lead_text": "前回特集したKDの最終通告のニュースではESPNのWojの姿が見られませんでした。Wojは"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "ケヴィン・デュラントの最終通告",
-    "atricle_url": "http://nbareporter.net/2022/08/19/01-122/",
-    "posted_at": "2022-08-19",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/08/Charles-Wenzelber_New-York-Post-600x400.jpg",
-    "lead_text": "ケヴィン・デュラントがネッツのオーナーのジョー・サイとロンドンで直接会った時に、自分を取る"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "セクストンとキャヴァリアーズ",
-    "atricle_url": "http://nbareporter.net/2022/08/10/01-121/",
-    "posted_at": "2022-08-10",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/08/sexton_QO4-600x400.jpg",
-    "lead_text": "トレードが落ち着いたからか、先週まだ契約できていないキャヴスのRFAのコリン・セクストンに"
-  },
-  {
-    "media": "NBA_Report",
-    "title": "ウォリアーズはどこまで払えるのか",
-    "atricle_url": "http://nbareporter.net/2022/08/04/01-120/",
-    "posted_at": "2022-08-04",
-    "thmbnail_img_url": "http://nbareporter.net/wp-content/uploads/2022/08/lacob_CEO2-600x400.jpg",
-    "lead_text": "昨年のウォリアーズはサラリーが$176.8Mで、リピータータックスが$176.7Mと合計$"
-  }
-]
+      dummyData: undefined,
     }
   },
 
@@ -160,10 +83,20 @@ export default {
             // console.
             // console.log(doc.id, '=>', doc.data());
           });
-          console.log(this.dummyData)
+          for(let i in this.dummyData){
+            let data = this.dummyData[i]
+            // console.log(i)
+            data.lead_text = data.lead_text.substr(0, 50) + "\u2026";
+          }
+          // console.log(this.dummyData)
         }).catch((error) => {
             console.log("Error getting document:", error);
         }); 
+
+        
+
+
+        // "abcdef".substr(0, 3) + "\u20/26";
       
       
     },
@@ -174,21 +107,14 @@ export default {
 
     this.getTheData()
     
-    // console.log(this.dummyData)
   },
-  
-  created(){
-
-    // const {Storage} = require('@google-cloud/storage');
-    // console.log(Storage)
-    // const {Storage} = require('@google-cloud/storage');
-  }
 
 
 }
 </script>
 
 <style>
+  
   h1{
     margin: 5px
   }
@@ -264,4 +190,28 @@ export default {
     text-align: right;
     /* background-color: red; */
   }
+
+  /* -------------------------------- */
+  .loader {
+    margin-top: 100px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 20%;
+    aspect-ratio: 1/1;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    margin: 30px auto;
+    
+  }
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 </style>
