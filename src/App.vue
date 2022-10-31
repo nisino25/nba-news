@@ -40,6 +40,11 @@
   </div>
 </template>
 
+<script>
+export default{
+  
+} 
+</script>
 <style>
 body{
   /* background-color: #0F3460; */

@@ -40,7 +40,13 @@
 </template>
 
 <script>
- 
+import db from '../../firebase.js';
+// import { getDatabase, ref, child, get } from "../../firebase.js";
+// import { Storage } from '@google-colud/storage';
+// import configs from "../configs";
+
+
+
 
 export default {
   name: 'Home',
@@ -49,6 +55,7 @@ export default {
   },
   data(){
     return{
+      // db,
       dummyData:[
   {
     "media": "NBA_Report",
@@ -137,13 +144,44 @@ export default {
   methods:{
     openInNewTab(url) {
       window.open(url, '_blank').focus();
-    }
+    },
+
+    async getTheData(){ 
+      var docRef = db.collection('daily_news_20221029');
+       
+
+        docRef.get().then((doc) => {
+          this.dummyData = []
+          // console.table(this.dummyData)
+
+          doc.forEach(doc => {
+            this.dummyData.push(doc.data())
+            // count++
+            // console.
+            // console.log(doc.id, '=>', doc.data());
+          });
+          console.log(this.dummyData)
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        }); 
+      
+      
+    },
   },
 
   mounted(){
     console.clear()
+
+    this.getTheData()
     
-    console.log(this.dummyData)
+    // console.log(this.dummyData)
+  },
+  
+  created(){
+
+    // const {Storage} = require('@google-cloud/storage');
+    // console.log(Storage)
+    // const {Storage} = require('@google-cloud/storage');
   }
 
 
