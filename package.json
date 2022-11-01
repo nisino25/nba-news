@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^6.6.0",
+    "aos": "^2.3.4",
     "convert-csv-to-json": "^1.3.3",
     "core-js": "^3.26.0",
     "firebase": "^9.13.0",
@@ -16,13 +17,14 @@
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~v5.0.0-alpha.7",
     "@vue/cli-plugin-router": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
     "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
   }
 }

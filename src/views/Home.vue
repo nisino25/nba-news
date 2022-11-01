@@ -5,8 +5,11 @@
     <!-- <span v-if="wholeData">{{wholeData[0]}}</span> -->
 
     <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; ">
+      <hr>
+      <strong style="display: block;text-align: right;margin: -20px 20px;"> 最終更新 {{theDate}}</strong>
       <template v-for="(article,i) in wholeData[0]" :key="i">
-        <div class="article" >
+        <div class="article" 
+        data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
           <div class="article-left">
             <img :src="article.thmbnail_img_url" alt="">
           </div>
@@ -21,18 +24,6 @@
 
 
           </div>
-
-
-          <!-- 
-          <span style="text-align: right; color: white; display:inline; float: right">{{article.media}}</span>
-          <span style="text-align: left; color: white; float: left;">{{article.posted_at}}</span><br>
-
-          <img :src="article.thmbnail_img_url" alt=""><br>
-          <span style="color: white; margin-top: 50px; font-size: 85%">{{article.lead_text}}...</span>
-          <br>
-          <div class="read-more" style="" @click="openInNewTab(`${article.atricle_url}`);">
-            <button>Read more</button>
-         </div> -->
         </div>
       </template>
     </div>
@@ -46,12 +37,10 @@
 
 <script>
 import db from '../../firebase.js';
+import AOS from "aos";
 // import { getDatabase, ref, child, get } from "../../firebase.js";
 // import { Storage } from '@google-colud/storage';
 // import configs from "../configs";
-
-
-
 
 export default {
   name: 'Home',
@@ -63,6 +52,7 @@ export default {
       // db,
       dummyData: undefined,
       wholeData: undefined,
+      theDate: undefined,
     }
   },
 
@@ -77,97 +67,43 @@ export default {
         this.wholeData = []
         
 
-        // this.dummyData = []
-        // console.table(this.dummyData)
         doc.forEach(doc => {
-          this.wholeData.push(doc.data().data)
+          this.theDate = doc.id
+          this.wholeData.unshift(doc.data().data)
         });
 
-        console.log(this.wholeData)
-        // for(let i in this.dummyData){
-        //   let data = this.dummyData[i]
-        //   // console.log(i)
-        //   data.lead_text = data.lead_text.substr(0, 50) + "\u2026";
-        // }
+        this.theDate  = this.theDate.slice(0, 4) + "-" + this.theDate.slice(4);
+        this.theDate  = this.theDate.slice(0, 7) + "-" + this.theDate.slice(7);
+        // this.theDate  =this.theDate.substring(0,7) + "-" + this.theDate.substring(2)
+        // console.log(this.theDate)
+ 
+        // console.log(this.wholeData)
+
+        for(let i in this.wholeData){
+          for(let j in this.wholeData[i]){
+            let data = this.wholeData[i][j]
+            let length = data.title.length + data.lead_text.length
+            // data.title+= `:${data.title.length}, ${data.lead_text.length}`
+            if(length > 100){
+              data.lead_text = data.lead_text.substr(0, 95-data.title.length) 
+              // data.lead_text += '...'
+              data.lead_text += '...'
+            }else{
+              data.lead_text += '...'
+            }
+            // data.lead_text = data.lead_text.substr(0, 50) + "\u2026";
+
+          }
+          
+          // console.log(i)
+          
+        }
         // console.log(this.dummyData)
       }).catch((error) => {
           console.log("Error getting document:", error);
       }); 
         
 
-        // ------------------------------------------------
-      // let query
-      // const d = new Date();
-      // query = `${d.getFullYear()}-${d.getMonth-1}-${d.getDate}`
-
-      // function getPreviousDay(date = new Date()) {
-      //   const previous = new Date(date.getTime());
-      //   previous.setDate(date.getDate() - 1);
-
-      //   return previous;
-      // }
-
-      // const theYear = getPreviousDay().getFullYear()
-      // const theMonth =getPreviousDay().getMonth() +1
-      // const thedate =getPreviousDay().getDate()
-      // query =`${theYear}${theMonth}${thedate }`
-
-      // var docRef = db.collection('daily_news').doc(query);
-      // var docRef = db.collection('daily_news')
-      // console.log(query)
-      // var docRef = db.collection('daily_news_20221029')
-      
-       
-
-        // docRef.get().then((doc) => {
-          // if (doc.exists) {
-            // console.log(doc.data())
-            // this.dummyData = (doc.data().data)
-
-            // for(let i in this.dummyData){
-            //   let data = this.dummyData[i]
-            //   // let length = data.title.length + data.lead_text.length
-            //   data.title+= `:${data.title.length}, ${data.lead_text.length}`
-              // if(length > 100){
-              //   data.lead_text = data.lead_text.substr(0, 30) 
-              //   data.lead_text += '!!!'
-              //   // data.lead_text = 'syo'
-              // }
-            // }
-          // }else{
-          //   console.log('doesnot exist')
-          // }
-
-          // this.dummyData = []
-          // // // console.table(this.dummyData)
-
-          // doc.forEach(doc => {
-          //   this.dummyData.push(doc.data())
-          //   // count++
-          //   // console.
-          //   // console.log(doc.id, '=>', doc.data());
-          // });
-          // for(let i in this.dummyData){
-          //   let data = this.dummyData[i]
-          //   let length = data.title.length
-          //   if(length + data.lead_text.length > 125){
-          //     data.lead_text = data.lead_text.substr(0, (180 - 125)) 
-          //     data.lead_text += '...'
-          //     // data.lead_text = 'syo'
-          //   }
-          // //   // console.log(i)
-           
-          // }
-          // console.log(this.dummyData)
-        // }).catch((error) => {
-        //     console.log("Error getting document:", error);
-        // }); 
-
-        
-
-
-        // "abcdef".substr(0, 3) + "\u20/26";
-      
       
     },
 
@@ -195,6 +131,7 @@ export default {
   },
 
   mounted(){
+    AOS.init()
     console.clear()
 
     this.getTheData()
@@ -210,11 +147,18 @@ export default {
   h1{
     margin: 5px
   }
+
+  .content-wrapper{
+    width: 92.5%;
+    max-width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+  }
   .article{
     background-color: white;
-    height: 140px;
+    height: 170px;
     width: 92.5%;
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 25px auto;
     /* border-radius: 10px; */
 
@@ -226,7 +170,7 @@ export default {
   .article-left{
     position: absolute;
     /* background-color: red; */
-    width: 37.5%;
+    width: 33.3%;
     height: 100%;
     z-index: 100;
     top: 0;
@@ -237,11 +181,11 @@ export default {
     position: absolute;
     padding: 10px;
     /* background-color: red; */
-    width: 62.5%;
+    /* width: 62.5%; */
     height: 100%;
     z-index: 100;
     top: 0;
-    left: 37.5%;
+    left: 33.3%;
 
     text-align: left;
   }
