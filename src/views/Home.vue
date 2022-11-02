@@ -219,7 +219,7 @@ export default {
   }
   .article{
     background-color: white;
-    height: 190px;
+    height: 200px;
     width: 100%;
     /* max-width: 600px; */
     margin: 25px auto;
@@ -292,7 +292,8 @@ export default {
   /* ------------------------- */
     /* ---------------- */
     .center {
-        margin-top: 100px;
+      margin-top: 50px;
+      margin-bottom: -50px;
       text-align: center;
     }
 

@@ -241,7 +241,7 @@ body {
 } */
 
 footer{ 
-  margin-top: auto;
+  /* margin-top: auto; */
   background-color: white;
   padding: 50px 15px;
   
