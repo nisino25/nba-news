@@ -4,18 +4,26 @@
     <h1 style="display: block; text-align: center;" @click="test()">Home</h1>
     <!-- <span v-if="wholeData">{{wholeData[0]}}</span> -->
 
-    <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; ">
+    <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; "
+    >
       <hr>
+      <span  style="display: block;text-align: left;margin: -20px 20px">{{Object.keys(this.wholeData[0]).length}}記事</span>
       <strong style="display: block;text-align: right;margin: -20px 20px;"> 最終更新 {{theDate}}</strong>
       <template v-for="(article,i) in wholeData[0]" :key="i">
         <div class="article" 
-        data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+        data-aos="fade-up"
+          data-aos-offset="150"
+          data-aos-duration="500"
+          data-aos-easing="ease-in-out"
+          deta-aos-once="true"
+          
+        >
           <div class="article-left">
             <img :src="article.thmbnail_img_url" alt="">
           </div>
 
           <div class="article-right"  @click="openInNewTab(`${article.atricle_url}`)">
-            <strong style=" display:inline-block;">{{article.title}}</strong><br>
+            <strong style=" display:inline-block;">{{parseInt(i) + 1}}. {{article.title}}</strong><br>
 
             <span style="margin-top: 50px; font-size: 85%">{{article.lead_text}}</span><br>
 
@@ -31,13 +39,15 @@
     <div v-else style=" min-height: 60vh; ">
       <div class="loader"></div>
     </div>
+
     
   </div>
 </template>
 
 <script>
 import db from '../../firebase.js';
-import AOS from "aos";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 // import { getDatabase, ref, child, get } from "../../firebase.js";
 // import { Storage } from '@google-colud/storage';
 // import configs from "../configs";
@@ -77,7 +87,8 @@ export default {
         // this.theDate  =this.theDate.substring(0,7) + "-" + this.theDate.substring(2)
         // console.log(this.theDate)
  
-        // console.log(this.wholeData)
+        // console.log(this.wholeData[0]
+        console.log(Object.keys(this.wholeData[0]).length)
 
         for(let i in this.wholeData){
           for(let j in this.wholeData[i]){
@@ -150,14 +161,14 @@ export default {
 
   .content-wrapper{
     width: 92.5%;
-    max-width: 1000px;
+    max-width: 850px;
     text-align: center;
     margin: 0 auto;
   }
   .article{
     background-color: white;
-    height: 170px;
-    width: 92.5%;
+    height: 180px;
+    width: 100%;
     /* max-width: 600px; */
     margin: 25px auto;
     /* border-radius: 10px; */
