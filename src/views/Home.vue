@@ -17,7 +17,7 @@
       <template v-for="(article,i) in wholeData[0]" :key="i">
         <div class="article"  v-if="showingPage * 10 > parseInt(i) && showingPage * 10 -10 <= parseInt(i)"
         data-aos="fade-up"
-          data-aos-offset="200"
+          data-aos-offset="175"
           data-aos-duration="500"
           data-aos-easing="ease-in-out"
           deta-aos-once="true"
