@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <!-- <h1 style="text-align: left; margin-left:25px;">Home</h1> -->
     <h1 style="display: block; text-align: center;" @click="test()">NBA最新記事</h1>
-    <!-- <span v-if="wholeData">{{wholeData[0]}}</span> -->
 
     <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; "
     >
@@ -15,59 +13,100 @@
       </div>
 
       <template v-for="(article,i) in wholeData[0]" :key="i">
-        <!-- <div class="article"  v-if="showingPage * 20 > parseInt(i) && showingPage * 20 -20 <= parseInt(i)" @click="showingArticle = i" :class="showingArticle == i ? 'shown-article' : 'article '"
-        data-aos="fade-up"
-          data-aos-offset="130"
-          data-aos-duration="500"
-          data-aos-easing="ease-in-out"
-          deta-aos-once="true"
-        > -->
-        <div class="smooth"  v-if="showingPage * 20 > parseInt(i) && showingPage * 20 -20 <= parseInt(i)" @click="showingArticle = i" :class="showingArticle == i ? 'shown-article' : 'article '"
-        >
-          <div class="" :class="showingArticle == i ? 'shown-article-left' : 'article-left'">
-            <img :src="article.thmbnail_img_url" alt="">
-          </div>
+        <div v-if="showingPage * 20 > parseInt(i) && showingPage * 20 -20 <= parseInt(i)" class="smooth">
 
-          
-
-          <div class="" :class="showingArticle == i ? 'shown-article-right' : 'article-right'">
-            <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
-
-            <span v-if="showingArticle == i" style="margin-top: 20px; font-size: 85%; ">{{article.lead_text}}</span><br>
-            <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
-
-            <!-- <span>{{article.source}}historyArticles</span> -->
-
-            <div class="bottom" style="margin-top:-15px">
-              <div>
-                <span style="font-size: 85%">{{article.source}}</span>
-              </div>
-
-              <div>
-                <small style="">{{article.posted_at}}</small>
-              </div>
+          <div class="article"  v-if="showingArticle !== i" @click="showingArticle = i" :class="showingArticle == i ? 'shown-article' : 'article '"
+            data-aos="fade-up"
+            data-aos-offset="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            deta-aos-once="true"
+          > 
+         
+            <div class="" :class="showingArticle == i ? 'shown-article-left' : 'article-left'">
+              <img :src="article.thmbnail_img_url" alt="">
             </div>
-
+  
             
-
+  
+            <div class="" :class="showingArticle == i ? 'shown-article-right' : 'article-right'">
+              <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
+  
+              <span v-if="showingArticle == i" style="margin-top: 20px; font-size: 85%; ">{{article.lead_text}}</span><br>
+              <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
+  
+              <!-- <span>{{article.source}}historyArticles</span> -->
+  
+              <div class="bottom" style="margin-top:-15px">
+                <div style=" display: flex; justify-content: space-around;">
+                  <div>
+                    <span style="font-size: 85%">{{article.source}}</span>
+                  </div>
+    
+                  <div>
+                    <small style="">{{article.posted_at}}</small>
+                  </div>
+                </div>
+              </div>
+  
+              
+  
+              
+  
+  
+  
+            </div>
+          </div>
+  
+  
+          <div class="shown-article"  v-else @click="showingArticle = undefined"
+          > 
+         
+            <div class="" :class="showingArticle == i ? 'shown-article-left' : 'article-left'">
+              <img :src="article.thmbnail_img_url" alt="">
+            </div>
+  
             
-
-
-
+  
+            <div class="" :class="showingArticle == i ? 'shown-article-right' : 'article-right'">
+              <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
+  
+              <span v-if="showingArticle == i" style="margin-top: 20px; font-size: 85%; ">{{article.lead_text}}</span><br>
+              <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
+  
+              <!-- <span>{{article.source}}historyArticles</span> -->
+  
+              <div class="bottom" style="margin-top:-15px">
+                <div>
+                  <span style="font-size: 85%">{{article.source}}</span>
+                </div>
+  
+                <div>
+                  <small style="">{{article.posted_at}}</small>
+                </div>
+              </div>
+  
+              
+  
+              
+  
+  
+  
+            </div>
           </div>
         </div>
       </template>
 
-        <div class="center" v-if="theLength > 10">
-          <div class="pagination">
-            <a @click="showingPage = 1" v-if="showingPage !==1">&laquo;</a>
-            <template v-for="(num, i) in pagingArray" :key="i">
-              <a @click="showingPage = num" :class="[num == showingPage?  'active': '' ]">{{num}}</a>
-            </template>
+      <div class="center" v-if="theLength > 10">
+        <div class="pagination">
+          <a @click="showingPage = 1" v-if="showingPage !==1">&laquo;</a>
+          <template v-for="(num, i) in pagingArray" :key="i">
+            <a @click="showingPage = num" :class="[num == showingPage?  'active': '' ]">{{num}}</a>
+          </template>
 
-            <a @click="showingPage == parseInt(theLength/20)" v-if="showingPage !== parseInt(theLength/20)+1">&raquo;</a>
-          </div>
+          <a @click="showingPage == parseInt(theLength/20)" v-if="showingPage !== parseInt(theLength/20)+1">&raquo;</a>
         </div>
+      </div>
 
     </div>
 
@@ -288,7 +327,7 @@ export default {
   .article-right{
     position: absolute;
     padding: 10px;
-    height: 100%;
+    height: auto;
     z-index: 100;
     top: 0;
     left: 40%;
@@ -302,6 +341,8 @@ export default {
     
 
   }
+
+  /* ------------------------------ */
 
   .shown-article{
     /* background-color: red; */
@@ -405,9 +446,14 @@ export default {
     /* font-size */
   }
 
-   .bottom{
-    display: flex; 
-    justify-content: space-around;
+  .bottom{
+    position: absolute;
+    top:120px;
+    /* background-color: red; */
+    width: 100%;
+    left:0;
+    /* bottom: 10; */
+   
 
     /* height: 50px; */
     /* position: absolute; */
