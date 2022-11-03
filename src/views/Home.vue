@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- <h1 style="text-align: left; margin-left:25px;">Home</h1> -->
-    <h1 style="display: block; text-align: center;" @click="test()">Home</h1>
+    <h1 style="display: block; text-align: center;" @click="test()">NBA最新記事</h1>
     <!-- <span v-if="wholeData">{{wholeData[0]}}</span> -->
 
     <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; "
@@ -15,24 +15,42 @@
       </div>
 
       <template v-for="(article,i) in wholeData[0]" :key="i">
-        <div class="article"  v-if="showingPage * 10 > parseInt(i) && showingPage * 10 -10 <= parseInt(i)"
+        <!-- <div class="article"  v-if="showingPage * 20 > parseInt(i) && showingPage * 20 -20 <= parseInt(i)" @click="showingArticle = i" :class="showingArticle == i ? 'shown-article' : 'article '"
         data-aos="fade-up"
-          data-aos-offset="175"
+          data-aos-offset="130"
           data-aos-duration="500"
           data-aos-easing="ease-in-out"
           deta-aos-once="true"
-         
+        > -->
+        <div class="smooth"  v-if="showingPage * 20 > parseInt(i) && showingPage * 20 -20 <= parseInt(i)" @click="showingArticle = i" :class="showingArticle == i ? 'shown-article' : 'article '"
         >
-          <div class="article-left">
+          <div class="" :class="showingArticle == i ? 'shown-article-left' : 'article-left'">
             <img :src="article.thmbnail_img_url" alt="">
           </div>
 
-          <div class="article-right"  @click="openInNewTab(`${article.atricle_url}`)">
+          
+
+          <div class="" :class="showingArticle == i ? 'shown-article-right' : 'article-right'">
             <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
 
-            <span style="margin-top: 50px; font-size: 85%">{{article.lead_text}}</span><br>
+            <span v-if="showingArticle == i" style="margin-top: 20px; font-size: 85%; ">{{article.lead_text}}</span><br>
+            <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
 
-            <small>{{article.posted_at}}</small>
+            <!-- <span>{{article.source}}historyArticles</span> -->
+
+            <div class="bottom" style="margin-top:-15px">
+              <div>
+                <span style="font-size: 85%">{{article.source}}</span>
+              </div>
+
+              <div>
+                <small style="">{{article.posted_at}}</small>
+              </div>
+            </div>
+
+            
+
+            
 
 
 
@@ -47,7 +65,7 @@
               <a @click="showingPage = num" :class="[num == showingPage?  'active': '' ]">{{num}}</a>
             </template>
 
-            <a @click="showingPage = parseInt(theLength/10)" v-if="showingPage !== theLength">&raquo;</a>
+            <a @click="showingPage == parseInt(theLength/20)" v-if="showingPage !== parseInt(theLength/20)+1">&raquo;</a>
           </div>
         </div>
 
@@ -81,6 +99,7 @@ export default {
       theLength: undefined,
 
       showingPage: 1,
+      showingArticle: undefined,
     }
   },
 
@@ -109,16 +128,19 @@ export default {
         for(let i in this.wholeData){
           for(let j in this.wholeData[i]){
             let data = this.wholeData[i][j]
-            let length = data.title.length + data.lead_text.length
-            // data.title+= `:${data.title.length}, ${data.lead_text.length}`
-            if(length > 100){
-              data.lead_text = data.lead_text.substr(0, 110-data.title.length) 
-              // data.lead_text += '...'
-              data.lead_text += '...'
-            }else{
-              data.lead_text += '...'
-            }
-            // data.lead_text = data.lead_text.substr(0, 50) + "\u2026";
+            
+            let str = data.atricle_url
+            str = str.substring(str.indexOf('/') + 1);
+            str = str.substring(str.indexOf('/') + 1);
+            if(str[0] == 'w') str = str.substring(4)
+            // 27. 【NBA】八村塁が６試合連続の２桁得点も、ウィザーズはディフェンスが振るわず３連敗で借金生活に＜DUNKSHOOT＞
+
+            if(str[str.length] == '＞')  str = str.slice(0, -6);
+            // str = str.substring(str.indexOf('.') + 0);
+
+            
+            str = str.split('.')[0]
+            data.source  = str
 
           }
           
@@ -168,36 +190,55 @@ export default {
   computed:{
       pagingArray(){
         if(!this.wholeData) return
-        if(this.theLength < 10) return
+        if(this.theLength < 20) return
+
+        let max = parseInt(this.theLength / 20)
+
         // 5 in total and arrows
-        let index = this.showingPage
+        // let index = this.showingPage
         // index = parseInt(index)
 
-        let last = this.theLength
-        
-        switch(index){
-          case 1:
-            return [1,2,3,4,5]
+        // let last = this.theLength
 
-          case 2:
-            return [1,2,3,4,5]
-
-          case last-1:
-            return [last-3,last-2, last-1,index,index+1]
-
-          case last:
-            return [index-4,index-3,index-2,index-1,index]
-
-          default:
-            return [index-2,index-1,index,index+1,index+2]
-
+        if(max ==2){
+          return [1,2,3]
+        }else if(max == 3){
+          return [1,2,3,4]
+        }else if(max ==4){
+          return [1,2,3,4,5]
         }
+
+
+        return []
+        
+        // switch(index){
+        //   case 1:
+        //     return [1,2,3,4,5]
+
+        //   case 2:
+        //     return [1,2,3,4,5]
+
+        //   case last-1:
+        //     return [last-3,last-2, last-1,index,index+1]
+
+        //   case last:
+        //     return [index-4,index-3,index-2,index-1,index]
+
+        //   default:
+        //     return [index-2,index-1,index,index+1,index+2]
+
+        // }
       },
+
+      
   },
 
   watch:{
     showingPage(){
       window.scrollTo(0,0);
+    },
+    showingArticle(){
+      console.log(this.showingArticle)
     }
   }
 
@@ -217,25 +258,29 @@ export default {
     text-align: center;
     margin: 50px auto;
   }
+
   .article{
     background-color: white;
-    height: 200px;
+    height: 130px;
     width: 100%;
-    /* max-width: 600px; */
     margin: 25px auto;
-    /* border-radius: 10px; */
 
     display: block;
     text-align: center;
-    position:relative
+    position:relative;
+
+    transition: all 1s linear;
+
+  }
+
+  .smooth{
+    transition: all 1s linear;
   }
 
   .article-left{
     position: absolute;
-    /* background-color: red; */
-    width: 33.3%;
+    width: 40%;
     height: 100%;
-    z-index: 100;
     top: 0;
     left: 0;
   }
@@ -243,20 +288,93 @@ export default {
   .article-right{
     position: absolute;
     padding: 10px;
-    /* background-color: red; */
-    /* width: 62.5%; */
     height: 100%;
     z-index: 100;
     top: 0;
-    left: 33.3%;
+    left: 40%;
 
     text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    
+
+  }
+
+  .shown-article{
+    /* background-color: red; */
+    background-color: white;
+    height: auto;
+    width: 100%;
+    margin: 25px auto;
+
+    /* display: block; */
+    text-align: center;
+    position:relative;
+
+    transition: 2s ease-in;
+
+  }
+
+  .shown-article-left{
+    /* display: block; */
+    /* position: absolute; */
+    width: 100%;
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+  }
+
+  .shown-article-right{
+    /* background-color: red; */
+    /* display: block; */
+    /* position: absolute; */
+    padding: 10px;
+    height: 100%;
+    z-index: 100;
+    /* top: 0;
+    left: 40%; */
+
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    
+
+  }
+
+  .shown-article strong{
+    /* color:yellow; */
+  }
+
+  .shown-article button{
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 10px auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    background-color: lightgrey; 
+    width: 50%;
+    
+    /* border: 2px solid #4CAF50; */
+
   }
   
 
   
 
-  .article img{
+  .article img, .shown-article img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -273,10 +391,12 @@ export default {
     border-radius: 10px */
   }
 
+
   .article strong{
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     color: black;
-    /* font-size: %; */
+    
+    font-size: 90%;
   }
 
   .article span{
@@ -285,6 +405,15 @@ export default {
     /* font-size */
   }
 
+   .bottom{
+    display: flex; 
+    justify-content: space-around;
+
+    /* height: 50px; */
+    /* position: absolute; */
+  }
+
+  
   .read-more{
     text-align: right;
     /* background-color: red; */

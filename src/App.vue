@@ -10,10 +10,7 @@
          ===================================
          -->
       <a href="/" class="nav-item active" data-color="#663399">Home</a>
-      <a href="/test" class="nav-item" data-color="#446A46">test</a>
-      <a href="/test" class="nav-item" data-color="#D82148">test</a>
-      <a href="/test" class="nav-item" data-color="#FFB72B">test</a>
-      <a href="/test" class="nav-item" data-color="#1C0A00">test</a>
+      <a href="/about" class="nav-item" data-color="#446A46">About</a>
       <span class="nav-indicator"></span>
    </nav>
 
@@ -29,8 +26,8 @@
           <hr>
           <div class="icon-wrapper">
             <!-- <a href="#" class="fa fa-twitter"></a> -->
-            <a href="https://www.instagram.com/nbabrosch/?hl=en" class="fa fa-instagram"></a>
-            <a href="https://www.youtube.com/channel/UCqIDEQXMYE_cueQyGl6Fgbw/videos?view=57" class="fa fa-youtube"></a>
+            <a target="_blank"  href="https://www.instagram.com/nbabrosch/?hl=en" class="fa fa-instagram"></a>
+            <a target="_blank"  href="https://www.youtube.com/channel/UCqIDEQXMYE_cueQyGl6Fgbw/videos?view=57" class="fa fa-youtube"></a>
 
           </div>
         </div>
