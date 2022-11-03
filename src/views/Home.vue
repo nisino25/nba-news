@@ -31,9 +31,9 @@
   
             <div class="" :class="showingArticle == i ? 'shown-article-right' : 'article-right'">
               <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
+              <button class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
   
-              <span v-if="showingArticle == i" style="margin-top: 20px; font-size: 85%; ">{{article.lead_text}}</span><br>
-              <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
+              
   
               <!-- <span>{{article.source}}historyArticles</span> -->
   
@@ -342,6 +342,30 @@ export default {
 
   }
 
+  .article .button{
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: -20px auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    background-color: lightgrey; 
+    width: 30%;
+    border-radius: 7.5px;
+
+  }
+
+
+
   /* ------------------------------ */
 
   .shown-article{
@@ -392,7 +416,7 @@ export default {
     /* color:yellow; */
   }
 
-  .shown-article button{
+  .shown-article .button{
     border: none;
     color: white;
     padding: 10px;
@@ -407,6 +431,8 @@ export default {
     color: black; 
     background-color: lightgrey; 
     width: 50%;
+
+    border-radius: 5px;
     
     /* border: 2px solid #4CAF50; */
 
