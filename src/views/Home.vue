@@ -76,8 +76,8 @@
   
               <!-- <span>{{article.source}}historyArticles</span> -->
   
-              <div class="bottom" style="margin-top:-15px">
-                <div>
+              <div class="bottom" style="margin-top:-15px; display: flex; justify-content: space-around;">
+                <div >
                   <span style="font-size: 85%">{{article.source}}</span>
                 </div>
   
@@ -300,7 +300,7 @@ export default {
 
   .article{
     background-color: white;
-    height: 130px;
+    height: 140px;
     width: 100%;
     margin: 25px auto;
 
@@ -344,7 +344,7 @@ export default {
 
   .article .button{
     position: absolute;
-    top: 100px;
+    top: 105px;
     right: 10px;
     border: none;
     color: white;
@@ -362,6 +362,19 @@ export default {
     width: 30%;
     border-radius: 7.5px;
 
+  }
+
+  .article .bottom{
+    position: absolute;
+    top:130px;
+    /* background-color: red; */
+    width: 100%;
+    left:0;
+    /* bottom: 10; */
+   
+
+    /* height: 50px; */
+    /* position: absolute; */
   }
 
 
@@ -472,18 +485,7 @@ export default {
     /* font-size */
   }
 
-  .bottom{
-    position: absolute;
-    top:120px;
-    /* background-color: red; */
-    width: 100%;
-    left:0;
-    /* bottom: 10; */
-   
-
-    /* height: 50px; */
-    /* position: absolute; */
-  }
+  
 
   
   .read-more{
