@@ -1,9 +1,10 @@
 <template>
   <div class="wrapper">
     <nav class="nav nav1" > 
-        <img src="../public/logo.jpg" alt="" href="/" style="margin-right: 8px">
+        <img src="../public/logo.jpg" alt="" href="" style="margin-right: 8px">
         <div>
-          <a href="/english" class="nav-item" data-color="#446A46" >English</a>
+          <a href="/" class="nav-item" data-color="#446A46" >Home</a>
+          <a href="/english" class="nav-item" data-color="#446A46" >Englih</a>
           <a href="/about" class="nav-item" data-color="#446A46">About</a>
           <span class="nav-indicator"></span>
 
@@ -12,6 +13,8 @@
       
       <!-- <a href="/" class="nav-item active" data-color="#663399">Home</a> -->
    </nav>
+
+   <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">&#8593;</button>
 
   </div>
    
@@ -39,11 +42,69 @@
 
 <script>
 export default{
+  data(){
+    return{
+      showing: false,
+    }
+  },
+  methods:{
+    topFunction(){
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    },
+
+    handleScroll () {
+      // if(event == 0)
+      // if( this.showingMenu){
+      //   return this.navStyle = 'background-color: #004658; color: white; '
+      // }
+      
+      if(window.scrollY < 20){
+        this.showing = false
+
+      } else{
+        this.showing = true
+        // console.log(window.scrollY)
+        this.navStyle = 'background-color: #004658; color: white; '
+      }
+
+
+      // console.log('now')
+
+
+    },
+  },
+
+  created(){
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
   
 } 
 </script>
 
 <style>
+#myBtn {
+  /* display: none; */
+  /* display: block; */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 200;
+  /* font-size: 18px; */
+  border: none;
+  outline: none;
+  background-color: #1C6758;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  /* padding: 15px; */
+
+  height: 50px;
+  width: 50px;
+  font-size: 200%;
+  transition: visibility 0s, opacity 1s;
+}
+
 body{
   /* background-color: #0F3460; */
   background-color: #eee;

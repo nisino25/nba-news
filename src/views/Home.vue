@@ -6,9 +6,9 @@
     >
       <hr>
       <div style="margin-bottom:40px">
-        <span  style="display: block;text-align: left;margin: -20px 10px">{{Object.keys(this.wholeData[0]).length}}記事</span>
+        <strong style="display: block;text-align: left;margin: -20px 0px;"><i class="fa fa-refresh" style="font-size:18px;background-color: #eee; color: black;margin: -10px;line-height: auto;"></i>{{timestamp}}</strong>
+        <span  style="display: block;text-align: right;margin: -20px 10px">{{Object.keys(this.wholeData[0]).length}}記事</span>
 
-        <strong style="display: block;text-align: right;margin: -20px 0px;"> 最終更新 {{timestamp}}</strong>
 
       </div>
 
@@ -523,9 +523,9 @@ export default {
     }
 
     .pagination a.active {
-      background-color: #4CAF50;
+      background-color: #1C6758;
       color: white;
-      border: 1px solid #4CAF50;
+      border: 1px solid #1C6758;
     }
 
 
