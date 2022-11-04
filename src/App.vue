@@ -1,10 +1,16 @@
 <template>
   <div class="wrapper">
-    <nav class="nav nav1"> 
-      <a href="/" class="nav-item active" data-color="#663399">Home</a>
-      <a href="/english" class="nav-item" data-color="#446A46">English</a>
-      <a href="/about" class="nav-item" data-color="#446A46">About</a>
-      <span class="nav-indicator"></span>
+    <nav class="nav nav1" > 
+        <img src="../public/logo.jpg" alt="" href="/" style="margin-right: 8px">
+        <div>
+          <a href="/english" class="nav-item" data-color="#446A46" >English</a>
+          <a href="/about" class="nav-item" data-color="#446A46">About</a>
+          <span class="nav-indicator"></span>
+
+        </div>
+
+      
+      <!-- <a href="/" class="nav-item active" data-color="#663399">Home</a> -->
    </nav>
 
   </div>
@@ -19,6 +25,7 @@
           <hr>
           <div class="icon-wrapper">
             <!-- <a href="#" class="fa fa-twitter"></a> -->
+            
             <a target="_blank"  href="https://www.instagram.com/nbabrosch/?hl=en" class="fa fa-instagram"></a>
             <a target="_blank"  href="https://www.youtube.com/channel/UCqIDEQXMYE_cueQyGl6Fgbw/videos?view=57" class="fa fa-youtube"></a>
 
@@ -57,16 +64,28 @@ body{
   
 }
 
-.nav,
+
 .nav-item {
-  position: relative;
+  /* position: relative; */
+  /* background-color: red; */
+
 }
+
+.nav img{
+  width: auto; 
+  height: 75%;  
+  border-radius: 50%; 
+}
+
+.nav-
 .nav-item:before,
 .nav1 .nav-item:before {
   width: 100%;
   height: 5px;
   background-color: #dfe2ea;
   opacity: 0;
+
+  
 }
 * {
   -webkit-box-sizing: border-box;
@@ -89,17 +108,34 @@ body {
   padding: 20px 0;
 }
 .nav {
+  /* float: right; */
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   overflow: hidden;
   max-width: 660px;
   min-width: 600px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  /* background-color: red; */
   padding: 0 20px;
   border-radius: 20px;
   -webkit-box-shadow: 0 8px 36px rgba(157, 160, 175, 0.8);
   box-shadow: 0 8px 36px rgba(157, 160, 175, 0.8);
+
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  
+  /* height: 200px; */
+  /* border: 3px solid green;  */
+  /* background-color: red; */
 }
 .nav-item {
   color: #83818c;
@@ -112,6 +148,10 @@ body {
   z-index: 1;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
+  /* text-align: right; */
+
+  /* background-color: red; */
+  /* float: right; */
 }
 .nav-item:before {
   content: "";
@@ -149,43 +189,7 @@ body {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-.nav2,
-.nav3 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding: 20px;
-}
-.nav2 .nav-indicator {
-  width: 5px;
-  left: 0;
-  border-radius: 0 8px 8px 0;
-}
-.nav2 .nav-item:before {
-  bottom: 0;
-  left: -27px;
-  width: 6px;
-  height: 100%;
-  border-radius: 0 8px 8px 0;
-}
-.nav3 .nav-indicator {
-  width: 5px;
-  border-radius: 8px 0 0 8px;
-  left: initial;
-  right: 0;
-}
-.nav3 .nav-item:before {
-  bottom: 0;
-  left: initial;
-  right: -27px;
-  width: 6px;
-  height: 100%;
-  border-radius: 8px 0 0 8px;
-}
+
 @media (max-width: 992px) {
   .wrapper {
     padding: 20px 0 15px;
