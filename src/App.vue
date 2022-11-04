@@ -14,7 +14,9 @@
       <!-- <a href="/" class="nav-item active" data-color="#663399">Home</a> -->
    </nav>
 
-   <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">&#8593;</button>
+   <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">
+    <span> &#8593; </span>
+  </button>
 
   </div>
    
