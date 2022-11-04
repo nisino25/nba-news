@@ -8,7 +8,7 @@
       <div style="margin-bottom:40px">
         <span  style="display: block;text-align: left;margin: -20px 10px">{{Object.keys(this.wholeData[0]).length}}記事</span>
 
-        <strong style="display: block;text-align: right;margin: -20px 0px;"> 最終更新 {{theDate}}</strong>
+        <strong style="display: block;text-align: right;margin: -20px 0px;"> 最終更新 {{timestamp}}</strong>
 
       </div>
 
@@ -139,6 +139,7 @@ export default {
 
       showingPage: 1,
       showingArticle: undefined,
+      timestamp: undefined,
     }
   },
 
@@ -156,10 +157,8 @@ export default {
         doc.forEach(doc => {
           this.theDate = doc.id
           this.wholeData.unshift(doc.data().data_en)
+          this.timestamp = doc.data().updated_at
         });
-
-        this.theDate  = this.theDate.slice(0, 4) + "-" + this.theDate.slice(4);
-        this.theDate  = this.theDate.slice(0, 7) + "-" + this.theDate.slice(7);
 
         this.theLength = Object.keys(this.wholeData[0]).length
 

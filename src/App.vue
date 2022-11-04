@@ -1,14 +1,6 @@
 <template>
   <div class="wrapper">
-    <nav class="nav nav1">
-      <!-- To change color of indicator and text you should change the value of data-color (hex, rgb, rgba or text color value)
-         ===================================
-         data-color="black"
-         data-color="#006400"
-         data-color="rgb(0, 0, 255)"
-         data-color="rgba(255, 0, 0, 1)"
-         ===================================
-         -->
+    <nav class="nav nav1"> 
       <a href="/" class="nav-item active" data-color="#663399">Home</a>
       <a href="/english" class="nav-item" data-color="#446A46">English</a>
       <a href="/about" class="nav-item" data-color="#446A46">About</a>
