@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 style="display: block; text-align: center;" @click="test()">NBA最新記事</h1>
+    <h1 style="display: block; text-align: center;" @click="test()">NBA Latest News</h1>
 
     <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; "
     >
