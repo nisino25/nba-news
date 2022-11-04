@@ -10,6 +10,7 @@
          ===================================
          -->
       <a href="/" class="nav-item active" data-color="#663399">Home</a>
+      <a href="/english" class="nav-item" data-color="#446A46">English</a>
       <a href="/about" class="nav-item" data-color="#446A46">About</a>
       <span class="nav-indicator"></span>
    </nav>

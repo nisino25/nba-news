@@ -155,7 +155,7 @@ export default {
 
         doc.forEach(doc => {
           this.theDate = doc.id
-          this.wholeData.unshift(doc.data().data)
+          this.wholeData.unshift(doc.data().data_en)
         });
 
         this.theDate  = this.theDate.slice(0, 4) + "-" + this.theDate.slice(4);
