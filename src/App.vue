@@ -101,7 +101,7 @@ export default{
 
   height: 50px;
   width: 50px;
-  font-size: 200%;
+  font-size: 30px;
   transition: visibility 0s, opacity 1s;
 }
 
