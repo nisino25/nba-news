@@ -228,9 +228,11 @@ export default {
   computed:{
       pagingArray(){
         if(!this.wholeData) return
-        if(this.theLength < 20) return
+        if(this.theLength < 20) return []
+        // this.theLength = 41
 
-        let max = parseInt(this.theLength / 20)
+        let max = parseInt((this.theLength-1) / 20)
+        // console.log(max)
 
         // 5 in total and arrows
         // let index = this.showingPage
@@ -247,7 +249,7 @@ export default {
         }
 
 
-        return []
+        return [1,2]
         
         // switch(index){
         //   case 1:
