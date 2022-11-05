@@ -31,7 +31,7 @@
   
             <div class="" :class="showingArticle == i ? 'shown-article-right' : 'article-right'">
               <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
-              <button class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
+              <button class="button button2"  @click="openInNewTab(`${article.article_url}`)">Read more</button> <br>
   
               
   
@@ -72,7 +72,7 @@
               <strong style=" display:inline-block;">{{parseInt(i) + 1 }}. {{article.title}}</strong><br>
   
               <span v-if="showingArticle == i" style="margin-top: 20px; font-size: 85%; ">{{article.lead_text}}</span><br>
-              <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.atricle_url}`)">Read more</button> <br>
+              <button v-if="showingArticle == i"  class="button button2"  @click="openInNewTab(`${article.article_url}`)">Read more</button> <br>
   
               <!-- <span>{{article.source}}historyArticles</span> -->
   
@@ -184,6 +184,7 @@ export default {
             
             str = str.split('.')[0]
             data.source  = str
+            console.log(data.article_url)
 
           }
           
@@ -191,12 +192,16 @@ export default {
           
         }
 
+        
+
         // this.timestamp =  this.wholeData[0].updated_at
         
-        // console.log(this.dummyData)
+        // console.log(this.wholeData[0])
       }).catch((error) => {
           console.log("Error getting document:", error);
       }); 
+
+      
         
 
       

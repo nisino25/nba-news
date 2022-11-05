@@ -14,9 +14,7 @@
       <!-- <a href="/" class="nav-item active" data-color="#663399">Home</a> -->
    </nav>
 
-   <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">
-    <span> &#8593; </span>
-  </button>
+   <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">&#8593;</button>
 
   </div>
    
@@ -86,27 +84,23 @@ export default{
 
 <style>
 #myBtn {
-  /* display: none; */
-  /* display: block; */
+  
+  transition: visibility 0s, opacity 1s;
+
   position: fixed;
   bottom: 20px;
-  right: 20px;
-  z-index: 200;
-  /* font-size: 18px; */
+  right: 30px;
+  z-index: 99;
+  font-size: 25px;
   border: none;
   outline: none;
-  background-color: #1C6758;
-  border-radius: 50%;
+  background-color: #1C6758;;
   color: white;
   cursor: pointer;
-  /* padding: 15px; */
+  padding: 10px 20px;
+  border-radius: 50%;
 
-  height: 50px;
-  width: 50px;
-  font-size: 30px;
-  transition: visibility 0s, opacity 1s;
 }
-
 body{
   /* background-color: #0F3460; */
   background-color: #eee;
