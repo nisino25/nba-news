@@ -38,7 +38,7 @@
               <div class="bottom" style="margin-top:-15px">
                 <div style=" display: flex; justify-content: space-around;">
                   <div>
-                    <span style="font-size: 85%">{{article.source}}</span>
+                    <span style="font-size: 85%">{{article.media}}</span>
                   </div>
     
                   <div>
