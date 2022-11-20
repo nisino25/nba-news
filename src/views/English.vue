@@ -40,7 +40,7 @@
               <div class="bottom" style="margin-top:-15px">
                 <div style=" display: flex; justify-content: space-around;">
                   <div>
-                    <span style="font-size: 85%">{{article.source}}</span>
+                    <span style="font-size: 85%">{{article.media}}</span>
                   </div>
     
                   <div>
@@ -157,7 +157,11 @@ export default {
         doc.forEach(doc => {
           this.theDate = doc.id
           this.wholeData.unshift(doc.data().data_en)
-          this.timestamp = doc.data().updated_at
+          let str = doc.data().updated_at
+          let first = str.substring(0, str.indexOf(":"));
+          let last = str.substring(str.indexOf(":") + 1);
+          last = last.substring(0, last.indexOf(":"));
+          this.timestamp = `${first}:${last}`
         });
 
         this.theLength = Object.keys(this.wholeData[0]).length
@@ -338,6 +342,9 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    min-width: 60%;
+    /* background-color: red; */
 
     
 

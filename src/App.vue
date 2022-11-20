@@ -1,43 +1,49 @@
 <template>
-  <div class="wrapper">
-    <nav class="nav nav1" > 
-        <img src="../public/logo.jpg" alt="" href="" style="margin-right: 8px">
-        <div>
-          <a href="/" class="nav-item" data-color="#446A46" >Home</a>
-          <a href="/english" class="nav-item" data-color="#446A46" >Englih</a>
-          <a href="/about" class="nav-item" data-color="#446A46">About</a>
-          <span class="nav-indicator"></span>
+  <body>
+    <main>
 
-        </div>
-
-      
-      <!-- <a href="/" class="nav-item active" data-color="#663399">Home</a> -->
-   </nav>
-
-   <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">&#8593;</button>
-
-  </div>
-   
-  <router-view/>
-
-  <div>
-    <footer>
-      <div class="footer-wrapper">
-        <strong>FOLLOW US</strong>
-        <div class="someclass"></div>
-          <hr>
-          <div class="icon-wrapper">
-            <!-- <a href="#" class="fa fa-twitter"></a> -->
-            
-            <a target="_blank"  href="https://www.instagram.com/nbabrosch/?hl=en" class="fa fa-instagram"></a>
-            <a target="_blank"  href="https://www.youtube.com/channel/UCqIDEQXMYE_cueQyGl6Fgbw/videos?view=57" class="fa fa-youtube"></a>
-
+      <div class="wrapper">
+        <nav class="nav nav1" > 
+            <img src="../public/logo.jpg" alt="" href="" style="margin-right: 8px">
+            <div>
+              <a href="/" class="nav-item" data-color="#446A46" >Home</a>
+              <a href="/english" class="nav-item" data-color="#446A46" >English</a>
+              <a href="/about" class="nav-item" data-color="#446A46">About</a>
+              <span class="nav-indicator"></span>
+    
+            </div>
+    
+          
+          <!-- <a href="/" class="nav-item active" data-color="#663399">Home</a> -->
+       </nav>
+    
+       <button @click="topFunction()" id="myBtn" title="Go to top" :style="showing ? 'opacity: 1;' : 'opacity: 0;'">&#8593;</button>
+    
+      </div>
+      <router-view/>
+    </main>
+     
+    
+    <div>
+      <footer>
+        <div class="footer-wrapper">
+          <strong>FOLLOW US</strong>
+          <div class="someclass"></div>
+            <hr>
+            <div class="icon-wrapper">
+              <!-- <a href="#" class="fa fa-twitter"></a> -->
+              
+              <a target="_blank"  href="https://www.instagram.com/nbabrosch/?hl=en" class="fa fa-instagram"></a>
+              <a target="_blank"  href="https://www.youtube.com/channel/UCqIDEQXMYE_cueQyGl6Fgbw/videos?view=57" class="fa fa-youtube"></a>
+  
+            </div>
           </div>
-        </div>
+          
         
-      
-    </footer>
-  </div>
+      </footer>
+    </div>
+  </body>
+
 </template>
 
 <script>
@@ -151,6 +157,17 @@ body{
 body {
   margin: 0;
   padding: 0;
+
+  min-height:100%;
+  display: flex;
+  flex-direction: column;
+  /* display:inline-block;  */
+}
+
+main{
+  /* flex-grow: 1; */
+  /* background-color: pink; */
+  
 }
 .wrapper {
   display: -webkit-box;
@@ -163,6 +180,12 @@ body {
   -ms-flex-align: center;
   align-items: center;
   padding: 20px 0;
+
+  
+
+  /* background-color: red; */
+
+  
 }
 .nav {
   /* float: right; */
@@ -290,11 +313,15 @@ body {
     padding: 25px 15px;
   }
 } */
-
+/* -------------------------- */
 footer{ 
   /* margin-top: auto; */
   background-color: white;
   padding: 50px 15px;
+  /* clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px; */
   
 }
 

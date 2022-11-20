@@ -2,8 +2,7 @@
   <div class="home">
     <h1 style="display: block; text-align: center;" @click="test()">NBA最新記事</h1>
 
-    <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; "
-    >
+    <div class="content-wrapper" v-if="wholeData" style="margin-bottom: 100px; ">
       <hr>
       <div style="margin-bottom:40px">
         <strong style="display: block;text-align: left;margin: -20px 0px;"><i class="fa fa-refresh" style="font-size:18px;background-color: #eee; color: black;margin: -10px;line-height: auto;"></i>{{timestamp}}</strong>
@@ -35,7 +34,6 @@
   
               
   
-              <!-- <span>{{article.source}}historyArticles</span> -->
   
               <div class="bottom" style="margin-top:-15px">
                 <div style=" display: flex; justify-content: space-around;">
@@ -159,7 +157,11 @@ export default {
         doc.forEach(doc => {
           this.theDate = doc.id
           this.wholeData.unshift(doc.data().data)
-          this.timestamp = doc.data().updated_at
+          let str = doc.data().updated_at
+          let first = str.substring(0, str.indexOf(":"));
+          let last = str.substring(str.indexOf(":") + 1);
+          last = last.substring(0, last.indexOf(":"));
+          this.timestamp = `${first}:${last}`
         });
 
         
@@ -323,6 +325,8 @@ export default {
 
     transition: all 1s linear;
 
+    /* position: relative; */
+
   }
 
   .smooth{
@@ -344,12 +348,16 @@ export default {
     z-index: 100;
     top: 0;
     left: 40%;
+    
+    min-width: 60%;
 
     text-align: left;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    /* background-color: red; */
 
     
 
